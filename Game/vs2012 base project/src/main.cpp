@@ -5,6 +5,19 @@
 
 //**********************************************************************
 
+class Gem : public King::Updater {
+public:
+	Gem() {};
+	~Gem() {};
+	
+	void Draw() {
+		mEngine.Render(TEXTURE_PURPLE, 200.0f, 100.0f);
+	}
+
+private:
+	unsigned short _mColor;
+};
+
 class ExampleGame : public King::Updater {
 public:
 
@@ -32,13 +45,15 @@ public:
 		mRotation += mEngine.GetLastFrameSeconds();
 		mEngine.Write(text, mEngine.GetWidth() / 2.0f, mEngine.GetHeight() / 2.0f, mRotation * 2.5f);
 
-		if (mEngine.GetMouseButtonDown()) {
+		/*if (mEngine.GetMouseButtonDown()) {
 			mYellowDiamondX = mEngine.GetMouseX();
 			mYellowDiamondY = mEngine.GetMouseY();
 		}
+
 		mEngine.Render(King::Engine::TEXTURE_YELLOW, mYellowDiamondX, mYellowDiamondY);
 		mEngine.Write("Click to", mYellowDiamondX, mYellowDiamondY + 40.0f);
-		mEngine.Write("move me!", mYellowDiamondX, mYellowDiamondY + 70.0f);
+		mEngine.Write("move me!", mYellowDiamondX, mYellowDiamondY + 70.0f*/
+
 	}
 
 private:
@@ -46,6 +61,8 @@ private:
 	float mRotation;
 	float mYellowDiamondX;
 	float mYellowDiamondY;
+	float mPurpleDiamondX;
+	float mPurpleDiamondY;
 };
 
 //**********************************************************************

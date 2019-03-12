@@ -3,11 +3,11 @@
 #include "Background.h"
 
 Background::Background(SDL_Renderer *r) {
-	_mRenderer = r;
+	Renderer = r;
 }
 
 Background::Background() {
-	_mRender = NULL;
+	Renderer = NULL;
 }
 
 Background::~Background() {
