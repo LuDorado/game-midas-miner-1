@@ -1,8 +1,8 @@
 #include "Texture.h"
 
 Texture::Texture() {
-	Renderer = NULL;
-	Texture = NULL;
+	_mRenderer = NULL;
+	_mTexture = NULL;
 
 	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
 		Log_Handler::LogError("IMG_Init PNG error");
@@ -13,33 +13,33 @@ Texture::Texture() {
 Texture::~Texture() {
 	SDL_DestroyTexture(_mTexture);
 
-	Renderer = NULL;
-	Texture = NULL;
+	_mRenderer = NULL;
+	_mTexture = NULL;
 }
 
 void Texture::Load(const char* file) {
-	Texture = IMG_LoadTexture(_mRenderer, file);
+	_mTexture = IMG_LoadTexture(_mRenderer, file);
 
-	if (Texture == NULL)
+	if (_mTexture == NULL)
 		Log_Handler::LogError("Error loading texture");
 }
 
 void Texture::Render() {
-	SDL_RenderCopy(Renderer, Texture, NULL, &Pos);
+	SDL_RenderCopy(_mRenderer, _mTexture, NULL, &_mPos);
 }
 
 void Texture::SetRenderer(SDL_Renderer *r) {
-	Renderer = r;
+	_mRenderer = r;
 }
 
 void Texture::SetClip(SDL_Rect r) {
-	Clip = r;
+	_mClip = r;
 }
 
 void Texture::SetPos(SDL_Rect r) {
-	Pos = r;
+	_mPos = r;
 }
 
 SDL_Rect Texture::GetPos() const {
-	return Pos;
+	return _mPos;
 }
