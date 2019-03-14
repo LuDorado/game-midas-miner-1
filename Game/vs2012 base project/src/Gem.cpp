@@ -1,4 +1,4 @@
-#include "Gem.h"
+#include "../headers/Gem.h"
 
 Gem::Gem(SDL_Renderer *r) {
 	_mRenderer = r;
@@ -11,30 +11,30 @@ Gem::Gem() {
 Gem::~Gem() {
 }
 
-void SetColor(unsigned short color) {
-	_mColor = color;
+void Gem::SetColor(unsigned short color) {
+	;
 }
 
-unsigned short GetColor() const {
+unsigned short Gem::GetColor() {
 	return _mColor;
 }
 
-void SetColumn(unsgined short column) {
+void Gem::SetColumn(unsigned short column) {
 	_mColumn = column;
 }
 
-unsigned short GetColumn() const {
+unsigned short Gem::GetColumn() {
 	return _mColumn;
 }
 
-void SetRow(unsigned short row) {
+void Gem::SetRow(unsigned short row) {
 	_mRow = row;
 }
 
-unsigned short GetColumn() const {
-	return _mColumn;
+unsigned short Gem::GetRow() {
+	return _mRow;
 }
 
-void DrawGem(Texture textura, float x, float y, float rotation = 0.0f) {
+/*void DrawGem(Texture textura, float x, float y, float rotation = 0.0f) {
 	mEngine.Render(King::Engine::TEXTURE_PURPLE, 250.0f, 250.0f);
-}
+}*/

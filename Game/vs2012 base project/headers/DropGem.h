@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SDL.h>
+#include "../external/include/sdl/SDL.h"
 #include <cassert>
 #include <list>
 
@@ -19,9 +19,8 @@ public:
 	bool Done();
 
 private:
-	bool Done;
-	SDL_Rect Dest;
-	list<Gem*> Gems;
+	bool _mDone;
+	SDL_Rect _mDest;
+	list<Gem*> _mGems;
 
-	<
 };

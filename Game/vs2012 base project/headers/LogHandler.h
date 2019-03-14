@@ -1,7 +1,7 @@
 // LogHandler implementation
 
 #pragma once
-#include <Sdl.h>
+#include "../external/include/sdl/SDL.h"
 #include <iostream>
 
 using namespace std;

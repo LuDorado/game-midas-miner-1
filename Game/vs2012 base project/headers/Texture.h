@@ -1,7 +1,7 @@
 #pragma once
-#include <Sdl.h>
-#include <SDL_image.h>
-#include "Log_handler.h"
+#include "../external/include/sdl/SDL.h"
+#include "../external/include/sdl/SDL_image.h"
+#include "../headers/LogHandler.h"
 
 class Texture {
 public:

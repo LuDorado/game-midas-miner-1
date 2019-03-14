@@ -1,13 +1,13 @@
 // Background implementation
 
-#include "Background.h"
+#include "../headers/Background.h"
 
 Background::Background(SDL_Renderer *r) {
-	Renderer = r;
+	_mRenderer = r;
 }
 
 Background::Background() {
-	Renderer = NULL;
+	_mRenderer = NULL;
 }
 
 Background::~Background() {

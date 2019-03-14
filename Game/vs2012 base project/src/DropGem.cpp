@@ -1,36 +1,36 @@
-#include "DropGem.h"
+#include "../headers/DropGem.h"
 
 DropGem::DropGem(list<Gem*> gems) {
-	Gems = gems;
-	Done = false;
-	Dest = {-1, -1, 0, 0}
+	_mGems = gems;
+	_mDone = false;
+	_mDest = { -1, -1, 0, 0 };
 }
 
 DropGem::~DropGem() {
 }
 
 bool DropGem::Done() {
-	return Done;
+	return _mDone;
 }
 
 void DropGem::Update() {
-	if (!Done) {
-		Gem *r = Gems.front();
+	if (!_mDone) {
+		Gem *r = _mGems.front();
 
-		if (Dest < 0) {
-			Dest.y = Background::OFFSET_Y + (r->GetRow() * Gem::GEM_HEIGHT) + (Gem::PIXEL_SEPARATION * r->GetRow());
-			Dest.x = r->GetPos().x;
+		if (_mDest.y < 0) {
+			_mDest.y = Background::OFFSET_Y + (r->GetRow() * Gem::GEM_HEIGHT) + (Gem::PIXEL_SEP * r->GetRow());
+			_mDest.x = r->GetPos().x;
 		}
 
-		SDL_Rect newPos = { Dest.x, r->GetPos().y + 5, Gem::GEM_WIDTH, Gem::GEM_HEIGHT };
+		SDL_Rect newPos = { _mDest.x, r->GetPos().y + 5, Gem::GEM_WIDTH, Gem::GEM_HEIGHT };
 		r->SetPos(newPos);
 
-		if (r->GetPos().y >= Dest.y) {
-			Dest = -1;
-			Gems.pop_front();
+		if (r->GetPos().y >= _mDest.y) {
+			_mDest.y = -1;
+			_mGems.pop_front();
 		}
 
-		if (Gems.empty())
-			Done = true;
+		if (_mGems.empty())
+			_mDone = true;
 	}
 }

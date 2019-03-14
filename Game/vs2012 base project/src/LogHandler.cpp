@@ -1,6 +1,6 @@
 // LogHandler header file, basic SDL error logger
 
-#include "LogHandler.h"
+#include "../headers/LogHandler.h"
 
 LogHandler::LogHandler() {
 }

@@ -2,14 +2,13 @@
 #include "Texture.h"
 
 
-class Gem : public Texture)
-{
+class Gem : public Texture {
 public:
-	static const int GEM_WIDTH = 0;
-	static const int GEM_HEIGHT = 0;
-	static const int PIXEL_SEP = 0;
+	static const int GEM_WIDTH = 35;
+	static const int GEM_HEIGHT = 35;
+	static const int PIXEL_SEP = 10;
 
-	static enum GEM_COLOR { RED, YELLOW, BLUE, GREEN, PURPLE };
+	enum GemColor { RED, YELLOW, BLUE, GREEN, PURPLE };
 
 
 	Gem(SDL_Renderer *r);
@@ -17,13 +16,13 @@ public:
 	~Gem();
 
 	void SetColor(unsigned short cr);
-	unsigned short GetColor() const;
+	unsigned short GetColor();
 
 	void SetRow(unsigned short r);
-	unsigned short GetRow() const;
+	unsigned short GetRow();
 
 	void SetColumn(unsigned short c);
-	unsigned short GetColumn() const;
+	unsigned short GetColumn();
 
 private:
 	unsigned short _mColor;

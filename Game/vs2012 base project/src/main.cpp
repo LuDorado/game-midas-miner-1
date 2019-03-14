@@ -3,9 +3,66 @@
 #include <king/Engine.h>
 #include <king/Updater.h>
 
+#include "../external/include/sdl/SDL.h"
+#include "../headers/Game.h"
+#include "../headers/Background.h"
+#include "../headers/Gem.h"
+#include "../headers/WindowHandler.h"
+
+using namespace std;
+
+int main(int argc, char* args[])
+{
+	WindowHandler *myWindow = new WindowHandler(800, 600);
+	Game *myGame = new Game(myWindow->GetRenderer());
+	myGame->SetState(Game::LOADING);
+	myGame->LoadGame(1);
+	myGame->SetState(Game::IDLE);
+
+	SDL_Event event;
+	bool quit = false;
+	while (!quit)
+	{
+		//Process user input
+		while ((myGame->GetGameState() == Game::IDLE ||
+			myGame->GetGameState() == Game::FINISHED) &&
+			SDL_PollEvent(&event))
+		{
+			switch (event.type) {
+			case SDL_QUIT:
+				quit = true;
+				break;
+			case SDL_KEYDOWN:
+				if (event.key.keysym.sym == SDLK_ESCAPE)
+					quit = true;
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				if (myGame->GetGameState() == Game::IDLE)
+					myGame->OnMouseButtonDown(event.button.x, event.button.y);
+				break;
+			case SDL_MOUSEBUTTONUP:
+				if (myGame->GetGameState() == Game::IDLE)
+					myGame->OnMouseButtonUp(event.button.x, event.button.y);
+				break;
+			}//switch
+		}//while SDL_PollEvents
+
+		//Perform animations or update objects positions
+		myGame->Update();
+
+		//Draw next frame		
+		myGame->Render();
+	}//while !quit
+
+	delete myGame;
+	delete myWindow;
+
+	return 0;
+}
+
 //**********************************************************************
 
-class Gem : public King::Updater {
+/*class Gem : public King::Updater {
 public:
 	Gem() {};
 	~Gem() {};
@@ -52,7 +109,7 @@ public:
 
 		mEngine.Render(King::Engine::TEXTURE_YELLOW, mYellowDiamondX, mYellowDiamondY);
 		mEngine.Write("Click to", mYellowDiamondX, mYellowDiamondY + 40.0f);
-		mEngine.Write("move me!", mYellowDiamondX, mYellowDiamondY + 70.0f*/
+		mEngine.Write("move me!", mYellowDiamondX, mYellowDiamondY + 70.0f
 
 	}
 
@@ -72,6 +129,6 @@ int main(int argc, char *argv[]) {
 	game.Start();
 
 	return 0;
-}
+}*/
 
 

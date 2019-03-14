@@ -1,4 +1,4 @@
-#include "GemSwap.h"
+#include "../headers/GemSwap.h"
 //el constructor recibe dos parametros de tipo puntero a la clase Gem 
 
 Swap::Swap(Gem * A, Gem * B)

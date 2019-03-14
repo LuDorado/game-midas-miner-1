@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SDL.h>
+#include "../external/include/sdl/SDL.h"
 #include <cassert>
 #include "Gem.h"
 
@@ -8,7 +8,7 @@ class Swap
 {
 public:
 
-	static enum ValidDirection { UP, DOWN, LEFT, RIGHT };
+	enum ValidDirection { UP, DOWN, LEFT, RIGHT };
 
 	//constructor
 	Swap(Gem* A, Gem* B);
@@ -18,7 +18,7 @@ public:
 	void SetDirection(enum ValidDirection d);
 	void RollBack();
 	void Update();
-	void RollingBack();
+	bool RollingBack();
 	bool Done();
 
 private:

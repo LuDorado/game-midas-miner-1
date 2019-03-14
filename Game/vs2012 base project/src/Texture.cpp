@@ -1,11 +1,11 @@
-#include "Texture.h"
+#include "../headers/Texture.h"
 
 Texture::Texture() {
 	_mRenderer = NULL;
 	_mTexture = NULL;
 
 	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
-		Log_Handler::LogError("IMG_Init PNG error");
+		LogHandler::LogError("IMG_Init PNG error");
 		SDL_Quit();
 	}
 }
@@ -21,7 +21,7 @@ void Texture::Load(const char* file) {
 	_mTexture = IMG_LoadTexture(_mRenderer, file);
 
 	if (_mTexture == NULL)
-		Log_Handler::LogError("Error loading texture");
+		LogHandler::LogError("Error loading texture");
 }
 
 void Texture::Render() {
